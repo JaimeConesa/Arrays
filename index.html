@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplos de Métodos de Arrays</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .method-section {
+            margin: 20px 0;
+        }
+
+        .method-header {
+            background-color: #0d6efd;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        pre {
+            background-color: #f1f1f1;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        button {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text-center my-4">Ejemplos de Métodos de Arrays</h1>
+        <!-- Template for Method Sections -->
+        <div id="examples"></div>
+    </div>
+    <script>
+        const examples = [
+            {
+                method: "Array.prototype.at()",
+                description: "Accede al elemento en una posición específica (soporta índicesnegativos).",
+                example: `let array = [10, 20, 30, 40];
+let result = array.at(-1); // Devuelve 40`,
+                execute: () => {
+                    let array = [10, 20, 30, 40];
+                    return array.at(-1); // Devuelve 40
+                }
+            },
+            {
+                method: "Array.prototype.concat()",
+                description: "Combina dos o más arrays.",
+                example: `let array1 = [10, 20];
+let array2 = [30, 40];
+let result = array1.concat(array2);`,
+                execute: () => {
+                    let array1 = [10, 20];
+                    let array2 = [30, 40];
+                    return array1.concat(array2);
+                }
+            },
+            {
+                method: "Array.prototype.copyWithin()",
+                description: "Copia una parte del array dentro del mismo array.",
+                example: `let array = [10, 20, 30, 40];
+array.copyWithin(0, 2);`,
+                execute: () => {
+                    let array = [10, 20, 30, 40];
+                    return array.copyWithin(0, 2); // [30, 40, 30, 40]
+                }
+            },
+            {
+                method: "Array.prototype.entries()",
+                description: "Crea un iterador de pares [índice, valor].",
+                example: `let array = [30, 40, 30, 40];
+array.copyWithin(0, 2);`,
+                execute: () => {
+                    let array = [10, 20, 30, 40, 50];
+                    for(const [indice, valor] of array.entries()){
+                        return (indice, valor); // [30, 40, 30, 40]
+                    }
+
+                }
+            },
+            {
+                method: "Array.prototype.every()",
+                description: "Verifica si todos los elementos cumplen una condición.",
+                example: `let array = [10, 20, 30, 40];
+array.very(n => n > 20);`,
+                execute: () => {
+                    let array = [10, 20, 30, 40];
+                    return array.every(n => n > 20); // [30, 40, 30, 40]
+                }
+            },
+            {
+                method: "Array.prototype.fill()",
+                description: "Rellena el array con un valor desde un índice inicial a uno final.",
+                example: `let array = [10, 20, 30, 40];
+array.fill('a',1,2);`,
+                execute: () => {
+                    let array = [10, 20, 30, 40];
+                    return array.fill('a',1,2); // [30, 40, 30, 40]
+                }
+            },
+            {
+                method: "Array.prototype.filter()",
+                description: "Rellena el array con un valor desde un índice inicial a uno final.",
+                example: `let filtro = array.filter(n => n > 30) ;`,
+                execute: () => {
+                    let array =[10,20,30,40,50]
+                    let filtro = array.filter(n => n >= 30) ;
+                    return filtro; // [30, 40, 50]
+                }
+            },
+            {
+                method: "Array.prototype.find()",
+                description: "Devuelve el primer elemento que cumpla con una condición.",
+                example: `let filtro = array.filter(n => n > 30) ;`,
+                execute: () => {
+                    let array =[10,20,30,40,50] ;
+                    return array.find(n => n > 30); // [40]
+                }
+            },
+            {
+                method: "Array.prototype.findIndex()",
+                description: "Devuelve el índice del primer elemento que cumpla una condición.",
+                example: `let filtro = array.filter(n => n > 30) ;`,
+                execute: () => {
+                    let array =[10,20,30,40,50] ;
+                    return array.findIndex(n => n > 30); // [3]
+                }
+            },
+            {
+                method: "Array.prototype.findLast()",
+                description: "Índice del último elemento que cumpla una condición.",
+                example: `let filtro = array.filter(n => n > 30) ;`,
+                execute: () => {
+                    let array =[10,20,30,40,50] ;
+                    return array.findLast(n => n > 30); // [50]
+                }
+            },
+            {
+                method: "Array.prototype.findLastIndex()",
+                description: "Índice del último elemento que cumpla una condición.",
+                example: `let filtro = array.filter(n => n > 30) ;`,
+                execute: () => {
+                    let array =[10,20,30,40,50] ;
+                    return array.findLastIndex(n => n > 30); // [4]
+                }
+            },
+            {
+                method: "Array.prototype.flat()",
+                description: "Aplana un array multidimensional.",
+                example: `let filtro = array.filter(n => n > 30) ;`,
+                execute: () => {
+                    let array =[10,[20,[30,40,50]]] ;
+                    return array.flat(2); // [ 10, 20, 30, 40, 50 ]
+                }
+            },
+            {
+                method: "Array.prototype.flatMap()",
+                description: "Aplica una función y aplana el resultado.",
+                example: `let filtro = array.filter(n => n > 30) ;`,
+                execute: () => {
+                    let array =[10,20,30,40,50] ;
+                    return array.flatMap(n=>[n*2]); // [ 20, 40, 60, 80, 100 ]
+                }
+            },
+            {
+                method: "Array.prototype.forEach()",
+                description: "Ejecuta una función por cada elemento.",
+                example: `let filtro = array.filter(n => n > 30) ;`,
+                execute: () => {
+                    let array =[10,20,30,40,50] ;
+                    return array.forEach(n => ' '); // [ 10, 20, 30, 40, 50 ]
+                }
+            },
+            {
+                method: "Array.prototype.includes()",
+                description: "Comprueba si el array contiene un valor.",
+                example: `let filtro = array.filter(n => n > 30) ;`,
+                execute: () => {
+                    let array =[10,20,30,40,50] ;
+                    return array.includes(30); // [true]
+                }
+            },
+            {
+                method: "Array.prototype.IndexOf()",
+                description: "Encuentra el índice de un elemento.",
+                example: `let filtro = array.filter(n => n > 30) ;`,
+                execute: () => {
+                    let array =[10,20,30,40,50] ;
+                    return array.indexOf(20); // [1]
+                }
+            },
+            {
+                method: "Array.prototype.join()",
+                description: "Combina los elementos del array en un string.",
+                example: `let filtro = array.filter(n => n > 30) ;`,
+                execute: () => {
+                    let array =[10,20,30,40,50] ;
+                    return array.join("."); // [ 10.20.30.40.50 ]
+                }
+            },
+            {
+                method: "Array.prototype.keys()",
+                description: "Iterador de índices.",
+                example: `let filtro = array.filter(n => n > 30) ;`,
+                execute: () => {
+                    let array =[10,20,30,40,50] ;
+                    for (const key of array.keys()){
+                        return key;
+                    }
+                }
+            },
+            {
+                method: "Array.prototype.keys()",
+                description: "Iterador de índices.",
+                example: `let filtro = array.filter(n => n > 30) ;`,
+                execute: () => {
+                    let array =[10,20,30,40,50] ;
+                    for (const key of array.keys()){
+                        return key;
+                    }
+                }
+            },
+            {
+                method: "Array.prototype.lastIndexOf()",
+                description: "Iterador de índices.",
+                example: `let filtro = array.filter(n => n > 30) ;`,
+                execute: () => {
+                    let array =[10,20,30,40,50] ;
+                    return array.lastIndexOf(20); // [1]
+                    }
+            },
+            {
+                method: "Array.prototype.map()",
+                description: "Crea un nuevo array transformando los elementos.",
+                example: `let filtro = array.filter(n => n > 30) ;`,
+                execute: () => {
+                    let array =[10,20,30,40,50] ;
+                    return array.map(n => n * 2); // [ 20, 40, 60, 80, 100 ]
+                }
+            },
+            {
+                method: "Array.prototype.pop()",
+                description: "Elimina el último elemento.",
+                example: `let filtro = array.filter(n => n > 30) ;`,
+                execute: () => {
+                    let array =[10,20,30,40,50] ;
+                    array.pop(20); // [ 20, 40, 60, 80, 100 ]
+                    return array;
+                }
+            },
+            {
+                method: "Array.prototype.map()",
+                description: "Crea un nuevo array transformando los elementos.",
+                example: `let filtro = array.filter(n => n > 30) ;`,
+                execute: () => {
+                    let array =[10,20,30,40,50] ;
+                    return array.map(n => n * 2); // [ 20, 40, 60, 80, 100 ]
+                }
+            },
+            {
+                method: "Array.prototype.push()",
+                description: "Agrega elementos al final.",
+                example: `let filtro = array.filter(n => n > 30) ;`,
+                execute: () => {
+                    let array =[10,20,30,40,50] ;
+                    array.push(2); // [ 20, 40, 60, 80, 100 ]
+                    return array;
+                }
+            },
+            {
+                method: "Array.prototype.reduce()",
+                description: "Reduce el array a un valor acumulado.",
+                example: `let filtro = array.filter(n => n > 30) ;`,
+                execute: () => {
+                    let array =[10,20,30,40,50] ;
+                    array.push(2); // [ 20, 40, 60, 80, 100 ]
+                    return array;
+                }
+            },
+        ];
+        // Renderizando las secciones dinámicamente
+        const container = document.getElementById("examples");
+        examples.forEach(({ method, description, example, execute }, index) => {
+            const section = document.createElement("div");
+            section.className = "method-section";
+            section.innerHTML = `
+            <div class="method-header">
+                <h2>${method}</h2>
+            </div>
+            <p><strong>Descripción:</strong> ${description}</p>
+            <pre><code>${example}</code></pre>
+            <button class="btn btn-primary" onclick="showResult(${index})">Ejecutar
+            Ejemplo</button>
+            <div id="result-${index}" class="mt-3 alert alert-secondary" style="display:
+            none;"></div>
+`;
+            container.appendChild(section);
+        });
+        // Función para mostrar los resultados al hacer clic en "Ejecutar Ejemplo"
+        function showResult(index) {
+            const resultDiv = document.getElementById(`result-${index}`);
+            const result = examples[index].execute();
+            resultDiv.style.display = "block";
+            resultDiv.textContent = `Resultado: ${JSON.stringify(result, null, 2)}`;
+        }
+    </script>
+</body>
+
+</html>
