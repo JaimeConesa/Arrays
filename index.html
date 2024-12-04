@@ -43,392 +43,303 @@
     </div>
     <script>
         const examples = [
-            {
-                method: "Array.prototype.at()",
-                description: "Accede al elemento en una posición específica (soporta índicesnegativos).",
-                example: `let array = [10, 20, 30, 40];
+        {
+        method: "Array.prototype.at()",
+        description: "Accede al elemento en una posición específica (soporta índices negativos).",
+        example: `let array = [10, 20, 30, 40];
 let result = array.at(-1); // Devuelve 40`,
-                execute: () => {
-                    let array = [10, 20, 30, 40];
-                    return array.at(-1); // Devuelve 40
-                }
-            },
-            {
-                method: "Array.prototype.concat()",
-                description: "Combina dos o más arrays.",
-                example: `let array1 = [10, 20];
+        execute: () => {
+            let array = [10, 20, 30, 40];
+            return array.at(-1); // Devuelve 40
+        }
+    },
+    {
+        method: "Array.prototype.concat()",
+        description: "Combina dos o más arrays en uno nuevo.",
+        example: `let array1 = [10, 20];
 let array2 = [30, 40];
-let result = array1.concat(array2);`,
-                execute: () => {
-                    let array1 = [10, 20];
-                    let array2 = [30, 40];
-                    return array1.concat(array2);
-                }
-            },
-            {
-                method: "Array.prototype.copyWithin()",
-                description: "Copia una parte del array dentro del mismo array.",
-                example: `let array = [10, 20, 30, 40];
-array.copyWithin(0, 2);`,
-                execute: () => {
-                    let array = [10, 20, 30, 40];
-                    return array.copyWithin(0, 2); // [30, 40, 30, 40]
-                }
-            },
-            {
-                method: "Array.prototype.entries()",
-                description: "Crea un iterador de pares [índice, valor].",
-                example: `let array = [30, 40, 30, 40];
-array.copyWithin(0, 2);`,
-                execute: () => {
-                    let array = [10, 20, 30, 40, 50];
-                    for (const [indice, valor] of array.entries()) {
-                        return (indice, valor); // [30, 40, 30, 40]
-                    }
-
-                }
-            },
-            {
-                method: "Array.prototype.every()",
-                description: "Verifica si todos los elementos cumplen una condición.",
-                example: `let array = [10, 20, 30, 40];
-array.very(n => n > 20);`,
-                execute: () => {
-                    let array = [10, 20, 30, 40];
-                    return array.every(n => n > 20); // [30, 40, 30, 40]
-                }
-            },
-            {
-                method: "Array.prototype.fill()",
-                description: "Rellena el array con un valor desde un índice inicial a uno final.",
-                example: `let array = [10, 20, 30, 40];
-array.fill('a',1,2);`,
-                execute: () => {
-                    let array = [10, 20, 30, 40];
-                    return array.fill('a', 1, 2); // [30, 40, 30, 40]
-                }
-            },
-            {
-                method: "Array.prototype.filter()",
-                description: "Rellena el array con un valor desde un índice inicial a uno final.",
-                example: `let filtro = array.filter(n => n > 30) ;`,
-                execute: () => {
-                    let array = [10, 20, 30, 40, 50]
-                    let filtro = array.filter(n => n >= 30);
-                    return filtro; // [30, 40, 50]
-                }
-            },
-            {
-                method: "Array.prototype.find()",
-                description: "Devuelve el primer elemento que cumpla con una condición.",
-                example: `let filtro = array.filter(n => n > 30) ;`,
-                execute: () => {
-                    let array = [10, 20, 30, 40, 50];
-                    return array.find(n => n > 30); // [40]
-                }
-            },
-            {
-                method: "Array.prototype.findIndex()",
-                description: "Devuelve el índice del primer elemento que cumpla una condición.",
-                example: `let filtro = array.filter(n => n > 30) ;`,
-                execute: () => {
-                    let array = [10, 20, 30, 40, 50];
-                    return array.findIndex(n => n > 30); // [3]
-                }
-            },
-            {
-                method: "Array.prototype.findLast()",
-                description: "Índice del último elemento que cumpla una condición.",
-                example: `let filtro = array.filter(n => n > 30) ;`,
-                execute: () => {
-                    let array = [10, 20, 30, 40, 50];
-                    return array.findLast(n => n > 30); // [50]
-                }
-            },
-            {
-                method: "Array.prototype.findLastIndex()",
-                description: "Índice del último elemento que cumpla una condición.",
-                example: `let filtro = array.filter(n => n > 30) ;`,
-                execute: () => {
-                    let array = [10, 20, 30, 40, 50];
-                    return array.findLastIndex(n => n > 30); // [4]
-                }
-            },
-            {
-                method: "Array.prototype.flat()",
-                description: "Aplana un array multidimensional.",
-                example: `let filtro = array.filter(n => n > 30) ;`,
-                execute: () => {
-                    let array = [10, [20, [30, 40, 50]]];
-                    return array.flat(2); // [ 10, 20, 30, 40, 50 ]
-                }
-            },
-            {
-                method: "Array.prototype.flatMap()",
-                description: "Aplica una función y aplana el resultado.",
-                example: `let filtro = array.filter(n => n > 30) ;`,
-                execute: () => {
-                    let array = [10, 20, 30, 40, 50];
-                    return array.flatMap(n => [n * 2]); // [ 20, 40, 60, 80, 100 ]
-                }
-            },
-            {
-                method: "Array.prototype.forEach()",
-                description: "Ejecuta una función por cada elemento.",
-                example: `let filtro = array.filter(n => n > 30) ;`,
-                execute: () => {
-                    let array = [10, 20, 30, 40, 50];
-                    return array.forEach(n => ' '); // [ 10, 20, 30, 40, 50 ]
-                }
-            },
-            {
-                method: "Array.prototype.includes()",
-                description: "Comprueba si el array contiene un valor.",
-                example: `let filtro = array.filter(n => n > 30) ;`,
-                execute: () => {
-                    let array = [10, 20, 30, 40, 50];
-                    return array.includes(30); // [true]
-                }
-            },
-            {
-                method: "Array.prototype.IndexOf()",
-                description: "Encuentra el índice de un elemento.",
-                example: `let filtro = array.filter(n => n > 30) ;`,
-                execute: () => {
-                    let array = [10, 20, 30, 40, 50];
-                    return array.indexOf(20); // [1]
-                }
-            },
-            {
-                method: "Array.prototype.join()",
-                description: "Combina los elementos del array en un string.",
-                example: `let filtro = array.filter(n => n > 30) ;`,
-                execute: () => {
-                    let array = [10, 20, 30, 40, 50];
-                    return array.join("."); // [ 10.20.30.40.50 ]
-                }
-            },
-            {
-                method: "Array.prototype.keys()",
-                description: "Iterador de índices.",
-                example: `let filtro = array.filter(n => n > 30) ;`,
-                execute: () => {
-                    let array = [10, 20, 30, 40, 50];
-                    for (const key of array.keys()) {
-                        return key;
-                    }
-                }
-            },
-            {
-                method: "Array.prototype.keys()",
-                description: "Iterador de índices.",
-                example: `let filtro = array.filter(n => n > 30) ;`,
-                execute: () => {
-                    let array = [10, 20, 30, 40, 50];
-                    for (const key of array.keys()) {
-                        return key;
-                    }
-                }
-            },
-            {
-                method: "Array.prototype.lastIndexOf()",
-                description: "Iterador de índices.",
-                example: `let filtro = array.filter(n => n > 30) ;`,
-                execute: () => {
-                    let array = [10, 20, 30, 40, 50];
-                    return array.lastIndexOf(20); // [1]
-                }
-            },
-            {
-                method: "Array.prototype.map()",
-                description: "Crea un nuevo array transformando los elementos.",
-                example: `let filtro = array.filter(n => n > 30) ;`,
-                execute: () => {
-                    let array = [10, 20, 30, 40, 50];
-                    return array.map(n => n * 2); // [ 20, 40, 60, 80, 100 ]
-                }
-            },
-            {
-                method: "Array.prototype.pop()",
-                description: "Elimina el último elemento.",
-                example: `let filtro = array.filter(n => n > 30) ;`,
-                execute: () => {
-                    let array = [10, 20, 30, 40, 50];
-                    array.pop(20); // [ 20, 40, 60, 80, 100 ]
-                    return array;
-                }
-            },
-            {
-                method: "Array.prototype.map()",
-                description: "Crea un nuevo array transformando los elementos.",
-                example: `let filtro = array.filter(n => n > 30) ;`,
-                execute: () => {
-                    let array = [10, 20, 30, 40, 50];
-                    return array.map(n => n * 2); // [ 20, 40, 60, 80, 100 ]
-                }
-            },
-            {
-                method: "Array.prototype.push()",
-                description: "Agrega elementos al final.",
-                example: `let filtro = array.filter(n => n > 30) ;`,
-                execute: () => {
-                    let array = [10, 20, 30, 40, 50];
-                    array.push(2); // [ 20, 40, 60, 80, 100 ]
-                    return array;
-                }
-            },
-            {
-                method: "Array.prototype.reduce()",
-                description: "Reduce el array a un valor acumulado.",
-                example: `let filtro = array.filter(n => n > 30) ;`,
-                execute: () => {
-                    let array = [10, 20, 30, 40, 50];
-                    array.push(2); // [ 20, 40, 60, 80, 100 ]
-                    return array;
-                }
-            },
-            {
-                method: "Array.prototype.reduce()",
-                description: "Reduce el array a un valor acumulado.",
-                example: `let filtro = array.filter(n => n > 30) ;`,
-                execute: () => {
-                    let array = [10, 20, 30, 40, 50];
-                    array.push(2); // [ 20, 40, 60, 80, 100 ]
-                    return array;
-                }
-            },
-            {
-                method: "Array.prototype.reverse()",
-                description: "Invierte el orden del array.",
-                example: `let filtro = array.filter(n => n > 30) ;`,
-                execute: () => {
-                    let array = [10, 20, 30, 40, 50];
-                    return array.reverse();
-                }
-            },
-            {
-                method: "Array.prototype.shift()",
-                description: "Elimina el primer elemento.",
-                example: `let filtro = array.filter(n => n > 30) ;`,
-                execute: () => {
-                    let array = [10, 20, 30, 40, 50];
-                    array.shift();
-                    return array;
-                }
-            },
-            {
-                method: "Array.prototype.slice()",
-                description: "Crea una copia parcial del array.",
-                example: `let filtro = array.filter(n => n > 30) ;`,
-                execute: () => {
-                    let array = [10, 20, 30, 40, 50];
-                    return array.slice(1, 2);
-                }
-            },
-            {
-                method: "Array.prototype.some()",
-                description: "Verifica si algún elemento cumple una condición.",
-                example: `let filtro = array.filter(n => n > 30) ;`,
-                execute: () => {
-                    let array = [10, 20, 30, 40, 50];
-                    return array.some(n => n > 30);
-                }
-            },
-            {
-                method: "Array.prototype.sort()",
-                description: "Ordena los elementos del array.",
-                example: `let filtro = array.filter(n => n > 30) ;`,
-                execute: () => {
-                    let array = [12, 80, 10, 20, 30, 40, 50];
-                    return array.sort();
-                }
-            },
-            {
-                method: "Array.prototype.splice()",
-                description: "Agrega, elimina o reemplaza elementos.",
-                example: `let filtro = array.filter(n => n > 30) ;`,
-                execute: () => {
-                    let array = [10, 20, 30, 40, 50];
-                    return array.splice(4);
-                }
-            },
-            {
-                method: "Array.prototype.toLocaleString()",
-                description: "Convierte los elementos a cadena con formato regional.",
-                example: `let filtro = array.filter(n => n > 30) ;`,
-                execute: () => {
-                    let array = [10, 20, 30, 40, 50];
-                    return array.toLocaleString();
-                }
-            },
-            {
-                method: "Array.prototype.toReversed()",
-                description: "Devuelve una copia del array invertida (sin modificar el original).",
-                example: `let filtro = array.filter(n => n > 30) ;`,
-                execute: () => {
-                    let array = [10, 20, 30, 40, 50];
-                    return array.toReversed();
-                }
-            },
-            {
-                method: "Array.prototype.toReversed()",
-                description: "Devuelve una copia del array invertida (sin modificar el original).",
-                example: `let filtro = array.filter(n => n > 30) ;`,
-                execute: () => {
-                    let array = [10, 20, 30, 40, 50];
-                    return array.toReversed();
-                }
-            },
-            {
-                method: "Array.prototype.toSorted()",
-                description: "Devuelve una copia ordenada.",
-                example: `let filtro = array.filter(n => n > 30) ;`,
-                execute: () => {
-                    let array = [30, 40, 50, 10, 20];
-                    return array.toSorted();
-                }
-            },
-            {
-                method: "Array.prototype.toSpliced()",
-                description: "Devuelve una copia con elementos eliminados y reemplazados.",
-                example: `let filtro = array.filter(n => n > 30) ;`,
-                execute: () => {
-                    let array = [30, 40, 50, 10, 20];
-                    return array.toSpliced(4, 1, 200);
-                }
-            },
-            {
-                method: "Array.prototype.toString()",
-                description: "Convierte el array en una cadena.",
-                example: `let filtro = array.filter(n => n > 30) ;`,
-                execute: () => {
-                    let array = [30, 40, 50, 10, 20];
-                    return array.toString();
-                }
-            },
-            {
-                method: "Array.prototype.unshift()",
-                description: "Agrega elementos al inicio.",
-                example: `let filtro = array.filter(n => n > 30) ;`,
-                execute: () => {
-                    let array = [30, 40, 50, 10, 20];
-                    array.unshift(1000);
-                    return array;
-                }
-            },
-            {
-                method: "Array.prototype.values()",
-                description: "Iterador de valores.",
-                example: `let filtro = array.filter(n => n > 30) ;`,
-                execute: () => {
-                    let array = [30, 40, 50, 10, 20];
-                    let result = []; // Creamos un array para recolectar los valores
-                    for (const valor of array.values()) {
-                        result.push(valor); // Agregamos cada valor al array de resultados
-                    }
-                    return result; // Retornamos todos los valores
-                }
-            },
+let result = array1.concat(array2); // [10, 20, 30, 40]`,
+        execute: () => {
+            let array1 = [10, 20];
+            let array2 = [30, 40];
+            return array1.concat(array2);
+        }
+    },
+    {
+        method: "Array.prototype.copyWithin()",
+        description: "Copia una parte del array dentro del mismo array, sin cambiar su longitud.",
+        example: `let array = [10, 20, 30, 40];
+array.copyWithin(0, 2); // [30, 40, 30, 40]`,
+        execute: () => {
+            let array = [10, 20, 30, 40];
+            return array.copyWithin(0, 2); // [30, 40, 30, 40]
+        }
+    },
+    {
+        method: "Array.prototype.entries()",
+        description: "Crea un iterador de pares [índice, valor] para los elementos del array.",
+        example: `let array = [10, 20, 30];
+for (const [index, value] of array.entries()) {
+    console.log(index, value); // 0 10, 1 20, 2 30
+}`,
+        execute: () => {
+            let array = [10, 20, 30];
+            let result = [];
+            for (const [index, value] of array.entries()) {
+                result.push([index, value]);
+            }
+            return result; // [[0, 10], [1, 20], [2, 30]]
+        }
+    },
+    {
+        method: "Array.prototype.every()",
+        description: "Devuelve true si todos los elementos cumplen con la condición.",
+        example: `let array = [10, 20, 30];
+let result = array.every(n => n > 5); // true`,
+        execute: () => {
+            let array = [10, 20, 30];
+            return array.every(n => n > 5); // true
+        }
+    },
+    {
+        method: "Array.prototype.fill()",
+        description: "Rellena el array con un valor desde un índice inicial hasta uno final.",
+        example: `let array = [10, 20, 30];
+array.fill(0, 1, 2); // [10, 0, 30]`,
+        execute: () => {
+            let array = [10, 20, 30];
+            return array.fill(0, 1, 2); // [10, 0, 30]
+        }
+    },
+    {
+        method: "Array.prototype.filter()",
+        description: "Crea un nuevo array con todos los elementos que cumplen la condición.",
+        example: `let array = [10, 20, 30];
+let result = array.filter(n => n > 15); // [20, 30]`,
+        execute: () => {
+            let array = [10, 20, 30];
+            return array.filter(n => n > 15); // [20, 30]
+        }
+    },
+    {
+        method: "Array.prototype.find()",
+        description: "Devuelve el primer elemento que cumple con la condición.",
+        example: `let array = [10, 20, 30];
+let result = array.find(n => n > 15); // 20`,
+        execute: () => {
+            let array = [10, 20, 30];
+            return array.find(n => n > 15); // 20
+        }
+    },
+    {
+        method: "Array.prototype.findIndex()",
+        description: "Devuelve el índice del primer elemento que cumple con la condición.",
+        example: `let array = [10, 20, 30];
+let result = array.findIndex(n => n > 15); // 1`,
+        execute: () => {
+            let array = [10, 20, 30];
+            return array.findIndex(n => n > 15); // 1
+        }
+    },
+    {
+        method: "Array.prototype.findLast()",
+        description: "Devuelve el último elemento que cumple con la condición.",
+        example: `let array = [10, 20, 30];
+let result = array.findLast(n => n > 15); // 30`,
+        execute: () => {
+            let array = [10, 20, 30];
+            return array.findLast(n => n > 15); // 30
+        }
+    },
+    {
+        method: "Array.prototype.findLastIndex()",
+        description: "Devuelve el índice del último elemento que cumple con la condición.",
+        example: `let array = [10, 20, 30];
+let result = array.findLastIndex(n => n > 15); // 2`,
+        execute: () => {
+            let array = [10, 20, 30];
+            return array.findLastIndex(n => n > 15); // 2
+        }
+    },
+    {
+        method: "Array.prototype.flat()",
+        description: "Aplana un array multidimensional en uno de profundidad especificada.",
+        example: `let array = [1, [2, [3]]];
+let result = array.flat(2); // [1, 2, 3]`,
+        execute: () => {
+            let array = [1, [2, [3]]];
+            return array.flat(2); // [1, 2, 3]
+        }
+    },
+    {
+        method: "Array.prototype.flatMap()",
+        description: "Aplica una función a cada elemento y aplana el resultado.",
+        example: `let array = [1, 2];
+let result = array.flatMap(n => [n, n * 2]); // [1, 2, 2, 4]`,
+        execute: () => {
+            let array = [1, 2];
+            return array.flatMap(n => [n, n * 2]); // [1, 2, 2, 4]
+        }
+    },
+    {
+        method: "Array.prototype.forEach()",
+        description: "Ejecuta una función para cada elemento del array.",
+        example: `let array = [10, 20];
+array.forEach(n => console.log(n));`,
+        execute: () => {
+            let array = [10, 20];
+            let results = [];
+            array.forEach(n => results.push(n));
+            return results; // [10, 20]
+        }
+    },
+    {
+        method: "Array.prototype.includes()",
+        description: "Comprueba si el array contiene un valor específico.",
+        example: `let array = [10, 20];
+let result = array.includes(20); // true`,
+        execute: () => {
+            let array = [10, 20];
+            return array.includes(20); // true
+        }
+    },
+    {
+        method: "Array.prototype.indexOf()",
+        description: "Encuentra el índice de un elemento en el array. Devuelve -1 si no lo encuentra.",
+        example: `let array = [10, 20, 30, 40, 50]; console.log(array.indexOf(20)); // 1`,
+        execute: () => {
+            let array = [10, 20, 30, 40, 50];
+            return array.indexOf(20); // 1
+        }
+    },
+    {
+        method: "Array.prototype.join()",
+        description: "Combina los elementos del array en un string, separados por un delimitador.",
+        example: `let array = [10, 20, 30]; console.log(array.join('-')); // "10-20-30"`,
+        execute: () => {
+            let array = [10, 20, 30];
+            return array.join('-'); // "10-20-30"
+        }
+    },
+    {
+        method: "Array.prototype.keys()",
+        description: "Crea un iterador para recorrer los índices del array.",
+        example: `let array = [10, 20, 30]; for (const key of array.keys()) console.log(key);`,
+        execute: () => {
+            let array = [10, 20, 30];
+            let result = [];
+            for (const key of array.keys()) {
+                result.push(key);
+            }
+            return result; // [0, 1, 2]
+        }
+    },
+    {
+        method: "Array.prototype.lastIndexOf()",
+        description: "Encuentra el último índice de un elemento en el array.",
+        example: `let array = [10, 20, 30, 20]; console.log(array.lastIndexOf(20)); // 3`,
+        execute: () => {
+            let array = [10, 20, 30, 20];
+            return array.lastIndexOf(20); // 3
+        }
+    },
+    {
+        method: "Array.prototype.map()",
+        description: "Crea un nuevo array aplicando una función a cada elemento.",
+        example: `let array = [1, 2, 3]; console.log(array.map(n => n * 2)); // [2, 4, 6]`,
+        execute: () => {
+            let array = [1, 2, 3];
+            return array.map(n => n * 2); // [2, 4, 6]
+        }
+    },
+    {
+        method: "Array.prototype.pop()",
+        description: "Elimina y devuelve el último elemento del array.",
+        example: `let array = [10, 20, 30]; console.log(array.pop()); // 30`,
+        execute: () => {
+            let array = [10, 20, 30];
+            array.pop();
+            return array; // [10, 20]
+        }
+    },
+    {
+        method: "Array.prototype.push()",
+        description: "Agrega elementos al final del array.",
+        example: `let array = [10, 20]; array.push(30); console.log(array); // [10, 20, 30]`,
+        execute: () => {
+            let array = [10, 20];
+            array.push(30);
+            return array; // [10, 20, 30]
+        }
+    },
+    {
+        method: "Array.prototype.reduce()",
+        description: "Aplica una función acumuladora a los elementos del array para reducirlos a un único valor.",
+        example: `let array = [1, 2, 3]; console.log(array.reduce((a, b) => a + b, 0)); // 6`,
+        execute: () => {
+            let array = [1, 2, 3];
+            return array.reduce((a, b) => a + b, 0); // 6
+        }
+    },
+    {
+        method: "Array.prototype.reverse()",
+        description: "Invierte el orden de los elementos del array.",
+        example: `let array = [10, 20, 30]; console.log(array.reverse()); // [30, 20, 10]`,
+        execute: () => {
+            let array = [10, 20, 30];
+            return array.reverse(); // [30, 20, 10]
+        }
+    },
+    {
+        method: "Array.prototype.some()",
+        description: "Comprueba si algún elemento cumple una condición.",
+        example: `let array = [1, 2, 3]; console.log(array.some(n => n > 2)); // true`,
+        execute: () => {
+            let array = [1, 2, 3];
+            return array.some(n => n > 2); // true
+        }
+    },
+    {
+        method: "Array.prototype.sort()",
+        description: "Ordena los elementos del array.",
+        example: `let array = [30, 10, 20]; console.log(array.sort((a, b) => a - b)); // [10, 20, 30]`,
+        execute: () => {
+            let array = [30, 10, 20];
+            return array.sort((a, b) => a - b); // [10, 20, 30]
+        }
+    },
+    {
+        method: "Array.prototype.toLocaleString()",
+        description: "Convierte los elementos del array en una cadena con formato local.",
+        example: `let array = [1234, 5678]; console.log(array.toLocaleString()); // "1,234,5,678"`,
+        execute: () => {
+            let array = [1234, 5678];
+            return array.toLocaleString();
+        }
+    },
+    {
+        method: "Array.prototype.unshift()",
+        description: "Agrega elementos al inicio del array.",
+        example: `let array = [20, 30]; array.unshift(10); console.log(array); // [10, 20, 30]`,
+        execute: () => {
+            let array = [20, 30];
+            array.unshift(10);
+            return array; // [10, 20, 30]
+        }
+    },
+    {
+        method: "Array.prototype.values()",
+        description: "Crea un iterador para recorrer los valores del array.",
+        example: `let array = [10, 20]; for (const value of array.values()) console.log(value);`,
+        execute: () => {
+            let array = [10, 20];
+            let result = [];
+            for (const value of array.values()) {
+                result.push(value);
+            }
+            return result; // [10, 20]
+        }
+    }
 
 
         ];
